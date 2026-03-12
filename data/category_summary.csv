@@ -1,0 +1,4 @@
+category,total_products,average_price,max_price,min_price
+Clothing,2,1850.0,2500,1200
+Electronics,3,31000.0,70000,3000
+Fashion,1,3500.0,3500,3500

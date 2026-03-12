@@ -1,0 +1,4 @@
+2026-03-12 22:09:45,382 - INFO - Pipeline started
+2026-03-12 22:09:45,384 - INFO - CSV file loaded successfully
+2026-03-12 22:09:45,394 - INFO - Aggregation completed and file saved
+2026-03-12 22:09:45,394 - INFO - Pipeline finished

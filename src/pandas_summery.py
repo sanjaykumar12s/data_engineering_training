@@ -1,14 +1,43 @@
 import pandas as pd
 import os
-current_dir = os.path.dirname(__file__) 
-file_path = os.path.join(current_dir, "..", "data", "products.csv")
+import logging
 
-df = pd.read_csv(file_path)
+# locate folders
+current_dir = os.path.dirname(__file__)
+data_path = os.path.join(current_dir, "..", "data", "products.csv")
+log_path = os.path.join(current_dir, "..", "logs", "pipeline.log")
 
-total_rows = len(df)
-unique_categories = df["category"].unique()
-average_price = df["price"].mean()
+# configure logging
+logging.basicConfig(
+    filename=log_path,
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
-print("Total rows:", total_rows)
-print("Unique categories:", unique_categories)
-print("Average price:", average_price)
+logging.info("Pipeline started")
+
+try:
+    df = pd.read_csv(data_path)
+    logging.info("CSV file loaded successfully")
+
+    # basic validation
+    if df["price"].isnull().any():
+        logging.warning("Null values detected in price column")
+
+    # transformation
+    category_summary = df.groupby("category").agg(
+        total_products=("product_id", "count"),
+        average_price=("price", "mean"),
+        max_price=("price", "max"),
+        min_price=("price", "min")
+    )
+
+    output_path = os.path.join(current_dir, "..", "data", "category_summary.csv")
+    category_summary.to_csv(output_path)
+
+    logging.info("Aggregation completed and file saved")
+
+except Exception as e:
+    logging.error(f"Pipeline failed: {e}")
+
+logging.info("Pipeline finished")
