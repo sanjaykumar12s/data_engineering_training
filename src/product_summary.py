@@ -1,6 +1,11 @@
 import csv
+import os
 
-file_path = "../data/products.csv"
+# get current script directory
+current_dir = os.path.dirname(__file__)
+
+# build path to data file
+file_path = os.path.join(current_dir, "..", "data", "products.csv")
 
 total_rows = 0
 categories = set()
