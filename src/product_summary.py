@@ -1,6 +1,6 @@
 import csv
 
-file_path = "products.csv"
+file_path = "../data/products.csv"
 
 total_rows = 0
 categories = set()
