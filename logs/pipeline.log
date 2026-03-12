@@ -2,3 +2,7 @@
 2026-03-12 22:09:45,384 - INFO - CSV file loaded successfully
 2026-03-12 22:09:45,394 - INFO - Aggregation completed and file saved
 2026-03-12 22:09:45,394 - INFO - Pipeline finished
+2026-03-12 22:17:35,328 - INFO - Pipeline started
+2026-03-12 22:17:35,330 - INFO - Data loaded
+2026-03-12 22:17:35,338 - INFO - Data transformation completed
+2026-03-12 22:17:35,338 - INFO - Pipeline finished
